@@ -8,6 +8,8 @@ import Hire from "./Hire"
 import Footer from "./Footer"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import PostPage from "./PostPage"
+import NewPost from "./NewPost"
+import Profile from "./Profile"
 
 
 function App() {
@@ -33,6 +35,10 @@ function App() {
   ])
 
 
+  const [postTitle, setPostTitle] = useState('')
+  const [postBody, setPostBody] = useState('')
+
+
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   let navigate = useNavigate()
@@ -41,6 +47,10 @@ function App() {
       const postsList = posts.filter(post => post.id !== id)
       setPosts(postsList)
       navigate('/')
+  }
+
+  const handleSubmit = () => {
+    
   }
 
 
@@ -57,13 +67,21 @@ function App() {
         <Route path="/" element={<Home
           posts={posts}
         />} />
-        <Route path="/post" element={<Post/>} />
+        <Route path="/post" element={<NewPost
+            handleSubmit={handleSubmit}
+            postTitle={postTitle}
+            setPostTitle={setPostTitle}
+            postBody={postBody}
+            setPostBody={setPostBody}
+        />} />
         <Route path="/post/:id" element={<PostPage
           posts={posts}
           handleDelete={handleDelete}
         />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/hire" element={<Hire />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     <Footer
     
