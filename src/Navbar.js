@@ -19,6 +19,7 @@ const Navbar = ({ search, setSearch }) => {
             <li><Link to="/post" >Post</Link></li>
             <li><Link to="/about" >About</Link></li>
             <li><Link to="/hire">Hire the Best</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
           </ul>
 
     </nav>
